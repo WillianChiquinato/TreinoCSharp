@@ -13,9 +13,9 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\USER\\Desktop\\githubs\\TreinoCSharp\\Screen-Sound.csproj",
-      "projectName": "Screen-Sound",
-      "projectPath": "C:\\Users\\USER\\Desktop\\githubs\\TreinoCSharp\\Screen-Sound.csproj",
+      "projectUniqueName": "C:\\Users\\USER\\Desktop\\githubs\\TreinoCSharp\\ScreenSound.csproj",
+      "projectName": "ScreenSound",
+      "projectPath": "C:\\Users\\USER\\Desktop\\githubs\\TreinoCSharp\\ScreenSound.csproj",
       "packagesPath": "C:\\Users\\USER\\.nuget\\packages\\",
       "outputPath": "C:\\Users\\USER\\Desktop\\githubs\\TreinoCSharp\\obj\\",
       "projectStyle": "PackageReference",

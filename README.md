@@ -8,3 +8,8 @@
 - Desenvolvimento de POO;
 - Construtores na incialização.
 - Praticando abstração e encapsulamento.
+
+## Curso 003
+- Herança, polimorfismo e Interfaces no C#.
+- Instancia com new sem declarar dps ( new("Info") ).
+- Namespaces, Protected, Override.

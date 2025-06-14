@@ -1,32 +1,62 @@
-﻿Console.Clear();
-Banda banda = new Banda("Csharp Band");
+﻿using ScreenSound.Menus;
+using ScreenSound.Modelos;
 
-Album album = new Album("Csharp para testes");
+Banda ira = new Banda("Ira!");
+ira.AdicionarNota(new Avaliacao(10));
+ira.AdicionarNota(new Avaliacao(8));
+ira.AdicionarNota(new Avaliacao(6));
+Banda beatles = new("The Beatles");
 
-Musica musica1 = new Musica("Csharp", banda, 2023, 200, true);
-Musica musica2 = new Musica("Csharp 2", banda, 2025, 250, false);
+Dictionary<string, Banda> bandasRegistradas = new();
+bandasRegistradas.Add(ira.Nome, ira);
+bandasRegistradas.Add(beatles.Nome, beatles);
 
-album.AddMusica(musica1);
-album.AddMusica(musica2);
+Dictionary<int, Menu> opcoes = new();
+opcoes.Add(1, new MenuRegistrarBanda());
+opcoes.Add(2, new MenuRegistrarAlbum());
+opcoes.Add(3, new MenuMostrarBandas());
+opcoes.Add(4, new MenuAvaliarBanda());
+opcoes.Add(5, new MenuExibirDetalhes());
+opcoes.Add(-1, new MenuSair());
 
-Console.WriteLine("\n\n");
-album.ExibirMusicasDoAlbum();
+void ExibirLogo()
+{
+    Console.WriteLine(@"
 
-banda.AdicionarAlbum(album);
-banda.ExibirDiscografia();
+░██████╗░█████╗░██████╗░███████╗███████╗███╗░░██╗  ░██████╗░█████╗░██╗░░░██╗███╗░░██╗██████╗░
+██╔════╝██╔══██╗██╔══██╗██╔════╝██╔════╝████╗░██║  ██╔════╝██╔══██╗██║░░░██║████╗░██║██╔══██╗
+╚█████╗░██║░░╚═╝██████╔╝█████╗░░█████╗░░██╔██╗██║  ╚█████╗░██║░░██║██║░░░██║██╔██╗██║██║░░██║
+░╚═══██╗██║░░██╗██╔══██╗██╔══╝░░██╔══╝░░██║╚████║  ░╚═══██╗██║░░██║██║░░░██║██║╚████║██║░░██║
+██████╔╝╚█████╔╝██║░░██║███████╗███████╗██║░╚███║  ██████╔╝╚█████╔╝╚██████╔╝██║░╚███║██████╔╝
+╚═════╝░░╚════╝░╚═╝░░╚═╝╚══════╝╚══════╝╚═╝░░╚══╝  ╚═════╝░░╚════╝░░╚═════╝░╚═╝░░╚══╝╚═════╝░
+");
+    Console.WriteLine("Boas vindas ao Screen Sound 2.0!");
+}
 
-Console.WriteLine("Pressione qualquer tecla para sair...");
+void ExibirOpcoesDoMenu()
+{
+    ExibirLogo();
+    Console.WriteLine("\nDigite 1 para registrar uma banda");
+    Console.WriteLine("Digite 2 para registrar o álbum de uma banda");
+    Console.WriteLine("Digite 3 para mostrar todas as bandas");
+    Console.WriteLine("Digite 4 para avaliar uma banda");
+    Console.WriteLine("Digite 5 para exibir os detalhes de uma banda");
+    Console.WriteLine("Digite -1 para sair");
 
-//Para o desafio do curso02.
-Episodio episodio = new Episodio("Tecnologia C#", 3600, 1);
-episodio.AdicionarConvidados("João");
-episodio.AdicionarConvidados("Maria");
+    Console.Write("\nDigite a sua opção: ");
+    string opcaoEscolhida = Console.ReadLine()!;
+    int opcaoEscolhidaNumerica = int.Parse(opcaoEscolhida);
 
-Episodio episodio2 = new Episodio("Desenvolvimento de Software", 5400, 2);
-episodio2.AdicionarConvidados("Carlos");
-episodio2.AdicionarConvidados("José");
+    if (opcoes.ContainsKey(opcaoEscolhidaNumerica))
+    {
+        Menu menuASerExibido = opcoes[opcaoEscolhidaNumerica];
+        menuASerExibido.Executar(bandasRegistradas);
+        if (opcaoEscolhidaNumerica > 0) ExibirOpcoesDoMenu();
+    } 
+    else
+    {
+        Console.WriteLine("Opção inválida");
+    }
+}
 
-PodCast podCast = new PodCast("Tech Host", "Tech Podcast");
-podCast.AdicionarEpisodio(episodio);
-podCast.AdicionarEpisodio(episodio2);
-podCast.ExibirDetalhes();
+ExibirOpcoesDoMenu();
