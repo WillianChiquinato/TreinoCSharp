@@ -3,3 +3,8 @@
 - Aprende como usar listas;
 - Aprendendo o principal sobre Dicionarios;
 - Pré POO;
+
+## Curso 002
+- Desenvolvimento de POO;
+- Construtores na incialização.
+- Praticando abstração e encapsulamento.
